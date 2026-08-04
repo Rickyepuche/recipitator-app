@@ -1,6 +1,9 @@
 import { loadHeaderFooter } from "./utils.mjs";
+import { getIngredients } from "./ingredientInput.js";
 
-(async function init() {     //removed the alerts that was initially a test
+document.querySelector("#submit-btn").addEventListener("click", ()=>{
+	const ingredients = getIngredients();
+	console.log(ingredients);
+});
 
-	loadHeaderFooter();
-})();
+loadHeaderFooter();
