@@ -15,7 +15,7 @@ async function loadTemplate(path) {
 
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("/recipitator-app/partials/header.html");
-  const footerTemplate = await loadTemplate("./recipitator-app/partials/footer.html");
+  const footerTemplate = await loadTemplate("/recipitator-app/partials/footer.html");
 
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
