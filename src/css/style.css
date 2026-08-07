@@ -358,9 +358,64 @@ main {
     padding-right: clamp(100px, 10vw, 150px);
     padding-top: 30px;
     padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     max-width: 100%;
     margin: 0 auto;
     background-color: var(--primary);
     align-items: center;
     text-decoration: none;
+}
+
+.selectors {
+    padding-left: clamp(100px, 10vw, 150px);
+    padding-right: clamp(100px, 10vw, 150px);
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#filter-button, #allergy-button, #search-button {
+    width: 10rem;
+    height: 4rem;
+}
+
+.footer-top {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid black;
+    padding-bottom: 20px;
+}
+
+.footer-top1{
+    flex: 1;
+}
+
+.footer-top2{
+    flex: 2;
+    font-family: var(--primary-font);
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+}
+.footer-top2 p{
+    margin-bottom: 10px;
+}
+
+.footer-top2 a{
+    text-decoration: none;
+    background:orangered;
+    margin-top: 15px;
+    padding: 5px 7px 5px 7px;
+    border-radius: 20px;
+    color: rgb(216, 205, 205);
+}
+
+.footer-bottom {
+    font-family: var(--primary-font);
+    font-size: 0.8rem;
+    color: white;
 }
