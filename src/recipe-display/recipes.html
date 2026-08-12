@@ -38,17 +38,89 @@
     <body>
         <header class="divider" id="main-header"></header>
         <main>
-            <div class="selectors">
-                <div>
-                    <button id="filter-button"><img src="/src/images/filter.png" alt="filter image">Filters</button>
-                </div>
-                <div>
-                    <button id="allergy-button"><img src="/src/images/allergy.png" alt="allergy image">Allergies</button>
-                </div>
-                <div>
-                    <button id="search-button">🔍 search</button>
-                </div>
+            
+                
+            <div id="searchWrapper" class="search-hidden">
+                <div class="filters"><button id="showFilter"><img src="/src/images/filter-icon.png" alt="filter"></button></div>
+                <input id="recipe-input" type="text"  placeholder="🔍">
+                <button id="recipe-search">search</button>
             </div>
+                
+
+            <div class="recipe-filter hidden">
+                <form id="recipe-filter-form">
+                    <fieldset>
+                        <legend>Diet</legend>
+                        <label>
+                            <input type="radio" name="diet" value="vagan">
+                            <span>Vegan</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="diet" value="vegetarian">
+                            <span>Vegetarian</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="diet" value="ketogenic">
+                            <span>Ketogenic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="diet" value="lacto-vegetarian">
+                            <span>Lacto-vegetarian</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="diet" value="ovo-vegetarian">
+                            <span>Ovo-vegetarian</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="diet" value="lacto-ovo vegetarian">
+                            <span>Lacto-ovo vegetarian</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Allergies</legend>
+                        <label>
+                            <input type="checkbox" name="intolerances" value="dairy">
+                            <span>Dairy</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="intolerances" value="egg">
+                            <span>Egg</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="intolerances" value="gluten">
+                            <span>Gluten</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="intolerances" value="grain">
+                            <span>Grain</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="intolerances" value="peanut">
+                            <span>Peanut</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="intolerances" value="soy">
+                            <span>Soy</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="intolerances" value="wheat">
+                            <span>Wheat</span>
+                        </label>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="recipe-results" class="recipe-results"></div>
         </main>
         <footer id="main-footer"></footer>
     </body>

@@ -32,24 +32,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
-    <link rel="stylesheet" href="../src/css/style.css"/>
-    <script type="module" src="../src/js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script type="module" src="../js/main.js"></script>
   </head>
   <body>
     <header class="divider" id="main-header"></header>
     <main>
-      <div class="left-spacer"></div>
-      <div>
-        <div class="info-2">
-          <div class="info-2-header"></div>
-            <div></div>
-            <div class="info-2-body-1"></div>
-            <div class="info-2-body-2"></div>
-            <div class="info-2-bottom"></div>
-            <div></div>
-          </div>
-      </div>
-      <div class="right-spacer"></div>
+      <section class="recipe-main-image">
+        <div id="recipe-main-image"></div>
+      </section>
+
+      <section class="recipe-detail">
+        <h1 id="recipe-title"></h1>
+        <p id="recipe-description"></p>
+        <div id="recipe-meta"></div>
+        <button id="favorite-btn">Add to favorites</button>
+      </section>
+
+      <section class="recipe-instructions">
+        <h2>Instructions</h2>
+        <div id="recipe-instructions"></div>
+      </section>
+
+      <section class="recipe-gallery">
+        <h2>Gallery</h2>
+        <button id="prev-image">‹</button>
+        <div id="gallery-image"></div>
+        <button id="next-image">›</button>
+      </section>
+
+      <section class="recipe-nutrition">
+        <h2>Nutrition</h2>
+        <div id="recipe-nutrition"></div>
+      </section>
     </main>
     <footer id="main-footer"></footer>
   </body>

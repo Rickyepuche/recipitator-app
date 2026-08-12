@@ -4,7 +4,7 @@ let debounceTimer;
 
 const input = document.querySelector("#ingredient-input");
 const suggestionBox = document.querySelector("#suggestions");
-const tagContainer = document.querySelector("ingredient-tags");
+const tagContainer = document.querySelector("#ingredient-tags");
 
 let selectedIngredients = [];
 
@@ -55,7 +55,7 @@ function addIngredient(name){
     const tag = document.createElement("div");
     tag.className = "tag";
 
-    tag.innerHtml = `${name} <button>&times;</button>`;
+    tag.innerHTML = `${name} <button>&times;</button>`;
 
     tag.querySelector("button").addEventListener("click", ()=>{
         selectedIngredients = selectedIngredients.filter(item=>item!==name);

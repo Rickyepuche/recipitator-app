@@ -1,21 +1,25 @@
 
 <div class="header-container">
-    <nav class="nav">        
+    <nav class="nav">
         <!-- Logo -->
         <div class="logo">
-            <a href="index.html">
+            <a href="/index.html">
                 <img src="/src/images/logo.png" alt="Recipitator Logo" class="logo-image">
                 <span>Recipitator</span>
             </a>
         </div>
+
         <!-- navigation links -->
-         <div class="nav-links">
-            <a href="src/recipe-display/recipes.html" class="silent-links">recipes</a>
-            <a href="src/recipe-display/favorites.html" class="silent-links">Favorites</a>
-         </div>
+        <div class="nav-links">
+            <a href="/src/recipe-display/recipes.html" class="silent-links">recipes</a>
+            <a href="/src/recipe-display/favorites.html" class="silent-links">Favorites</a>
+        </div>
 
         <!-- Hamburger Menu -->
-        <button id="menuBtn" class="hamburger" aria-label="Open menu">☰</button>
-    
+        <button id="menuBtn" class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+        <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+            <a href="/src/recipe-display/recipes.html">recipes</a>
+            <a href="/src/recipe-display/favorites.html">Favorites</a>
+        </div>
     </nav>
 </div>
