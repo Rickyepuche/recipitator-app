@@ -3,6 +3,12 @@ import { searchRecipesByName, fetchRandomRecipes } from "./recipeApi.js";
 
 let currentRecipes = [];
 
+const placeholderRecipeImage = new URL("../images/placeholder.jpg", import.meta.url).href;
+
+function getRecipeImageSrc(recipe) {
+  return recipe?.image || placeholderRecipeImage;
+}
+
 function getFilterForm() {
   return document.querySelector("#recipe-filter-form");
 }
@@ -163,7 +169,7 @@ export function renderRecipeResults(recipes) {
   resultsContainer.innerHTML = recipes
     .map((recipe) => `
       <article class="recipe-card">
-        <img src="${recipe.image}" alt="${recipe.title}">
+        <img src="${getRecipeImageSrc(recipe)}" alt="${recipe.title}">
         <h3>${recipe.title}</h3>
         <p>Used ingredients: ${recipe.usedIngredients?.length || 0}</p>
         <div class="recipe-actions">
@@ -203,7 +209,7 @@ export function renderFeaturedRecipes(recipes) {
 
       return `
         <article class="featured-card" data-id="${recipe.id}">
-          <img src="${recipe.image}" alt="${recipe.title}" />
+          <img src="${getRecipeImageSrc(recipe)}" alt="${recipe.title}" />
           <div class="featured-card-content">
             <h3>${recipe.title}</h3>
             <p>${ingredientText}</p>
@@ -267,7 +273,7 @@ export function renderFavoritesPage() {
   list.innerHTML = favorites
     .map((recipe) => `
       <article class="recipe-card">
-        <img src="${recipe.image}" alt="${recipe.title}">
+        <img src="${getRecipeImageSrc(recipe)}" alt="${recipe.title}">
         <h3>${recipe.title}</h3>
         <p>Ready in ${recipe.readyInMinutes || "?"} min</p>
         <button class="view-recipe" data-id="${recipe.id}">
