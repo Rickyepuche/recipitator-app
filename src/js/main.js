@@ -16,6 +16,7 @@ function initializeApp() {
     const recipeTitle = document.querySelector("#recipe-title");
     const recipeDescription = document.querySelector("#recipe-description");
     const recipeMeta = document.querySelector("#recipe-meta");
+    const recipeIngredients = document.querySelector("#recipe-ingredients");
     const recipeInstructions = document.querySelector("#recipe-instructions");
     const recipeMainImage = document.querySelector("#recipe-main-image");
     const galleryImage = document.querySelector("#gallery-image");
@@ -55,18 +56,32 @@ function initializeApp() {
     }
 
     function formatNutrients(nutrition) {
-        if (!nutrition || !nutrition.nutrients) return "";
+        if (!nutrition || !Array.isArray(nutrition.nutrients)) return "";
 
         return nutrition.nutrients
             .slice(0, 6)
             .map((nutrient) => {
-                const title = nutrient.title || "Nutrient";
+                const title = nutrient.name || nutrient.title || "Nutrient";
                 const amount = nutrient.amount ?? 0;
                 const unit = nutrient.unit ? ` ${nutrient.unit}` : "";
-                const displayAmount = Number.isFinite(Number(amount)) ? Number(amount).toFixed(amount % 1 === 0 ? 0 : 1) : amount;
+                const displayAmount = Number.isFinite(Number(amount))
+                    ? Number(amount).toFixed(amount % 1 === 0 ? 0 : 1)
+                    : amount;
 
                 return `<div class="nutrition-item"><strong>${title}:</strong> ${displayAmount}${unit}</div>`;
             })
+            .join("");
+    }
+
+    function formatIngredients(recipe) {
+        const ingredients = recipe?.extendedIngredients || recipe?.usedIngredients || recipe?.missedIngredients || [];
+
+        if (!ingredients.length) {
+            return "<li>No ingredients available.</li>";
+        }
+
+        return ingredients
+            .map((ingredient) => `<li>${ingredient.original || ingredient.name || "Ingredient"}</li>`)
             .join("");
     }
 
@@ -82,6 +97,10 @@ function initializeApp() {
                 <p><strong>Servings:</strong> ${recipe.servings || "N/A"}</p>
                 <p><strong>Cuisine:</strong> ${recipe.cuisines?.join(", ") || "Unknown"}</p>
             `;
+        }
+
+        if (recipeIngredients) {
+            recipeIngredients.innerHTML = formatIngredients(recipe);
         }
 
         if (recipeInstructions) {
