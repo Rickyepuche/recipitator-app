@@ -5,6 +5,7 @@ import { searchRecipesByIngredients, fetchRecipeDetails, fetchRandomRecipes } fr
 import { searchUnsplashPhotos } from "./upsplashApi.js";
 
 const INGREDIENTS_STORE_KEY = "recipeSearchIngredients";
+const placeholderRecipeImage = new URL("../images/placeholder.jpg", import.meta.url).href;
 let galleryImageUrls = [];
 let currentGalleryIndex = 0;
 
@@ -55,9 +56,17 @@ function initializeApp() {
 
     function formatNutrients(nutrition) {
         if (!nutrition || !nutrition.nutrients) return "";
+
         return nutrition.nutrients
             .slice(0, 6)
-            .map((nutrient) => `<div class="nutrition-item"><strong>${nutrient.title}:</strong> ${nutrient.amount}${nutrient.unit}</div>`)
+            .map((nutrient) => {
+                const title = nutrient.title || "Nutrient";
+                const amount = nutrient.amount ?? 0;
+                const unit = nutrient.unit ? ` ${nutrient.unit}` : "";
+                const displayAmount = Number.isFinite(Number(amount)) ? Number(amount).toFixed(amount % 1 === 0 ? 0 : 1) : amount;
+
+                return `<div class="nutrition-item"><strong>${title}:</strong> ${displayAmount}${unit}</div>`;
+            })
             .join("");
     }
 
@@ -102,10 +111,19 @@ function initializeApp() {
 
         if (recipe.image) {
             recipeMainImage.innerHTML = `
-                <img src="${recipe.image}" alt="${recipe.title}" />
+                <img
+                    src="${recipe.image}"
+                    alt="${recipe.title}"
+                    onerror="this.onerror=null; this.src='${placeholderRecipeImage}';"
+                />
             `;
         } else {
-            recipeMainImage.innerHTML = "<p>No recipe image available.</p>";
+            recipeMainImage.innerHTML = `
+                <img
+                    src="${placeholderRecipeImage}"
+                    alt="Recipe placeholder"
+                />
+            `;
         }
     }
 
@@ -119,7 +137,11 @@ function initializeApp() {
 
         const imageUrl = galleryImageUrls[currentGalleryIndex];
         galleryImage.innerHTML = `
-            <img src="${imageUrl}" alt="Recipe gallery image ${currentGalleryIndex + 1}" />
+            <img
+                src="${imageUrl}"
+                alt="Recipe gallery image ${currentGalleryIndex + 1}"
+                onerror="this.onerror=null; this.src='${placeholderRecipeImage}';"
+            />
         `;
     }
 
